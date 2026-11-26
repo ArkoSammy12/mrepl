@@ -19,6 +19,7 @@ pub enum Operator {
     Minus,
     Times,
     Divide,
+    Modulo,
     Power
 }
 
@@ -30,6 +31,7 @@ impl Display for Operator {
             Operator::Minus => "-",
             Operator::Times => "*",
             Operator::Divide => "/",
+            Operator::Modulo => "%",
             Operator::Power => "^"
         })
     }
@@ -88,6 +90,11 @@ pub fn tokenize(line: &str) -> Result<vec_deque::VecDeque<Token>, String> {
             '/' => {
                 tokens.push_back(Token::Operator {
                     operator: Operator::Divide
+                })
+            }
+            '%' => {
+                tokens.push_back(Token::Operator {
+                    operator: Operator::Modulo
                 })
             }
             '^' => {

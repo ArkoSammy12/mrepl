@@ -64,6 +64,13 @@ fn evaluate_node(node: &AstNode) -> Result<f64, String> {
                         lhs / rhs
                     }
                 }
+                BinaryOperator::Modulo => {
+                    if rhs == 0.0f64 {
+                        return Err("Cannot divide by zero".to_string())
+                    } else {
+                        lhs % rhs
+                    }
+                }
                 BinaryOperator::Power => lhs.powf(rhs)
             }
         }

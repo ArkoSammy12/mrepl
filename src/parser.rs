@@ -29,6 +29,7 @@ pub enum BinaryOperator {
     Subtract,
     Multiply,
     Divide,
+    Modulo,
     Power
 }
 
@@ -40,6 +41,7 @@ impl Display for BinaryOperator {
             BinaryOperator::Subtract => "-",
             BinaryOperator::Multiply => "*",
             BinaryOperator::Divide => "/",
+            BinaryOperator::Modulo => "%",
             BinaryOperator::Power => "^"
         })
     }
@@ -111,6 +113,7 @@ fn parse_term(tokens: &mut vec_deque::VecDeque<Token>) -> Result<AstNode, String
                 Token::Operator { operator } => match operator {
                     Operator::Times => Some(BinaryOperator::Multiply),
                     Operator::Divide => Some(BinaryOperator::Divide),
+                    Operator::Modulo => Some(BinaryOperator::Modulo),
                     _ => None
                 }
                 _ => None
