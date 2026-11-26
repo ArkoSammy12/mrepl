@@ -51,8 +51,8 @@ fn evaluate_node(node: &AstNode) -> Result<f64, String> {
             }
         }
         AstNode::BinaryOperation { operator, left, right } => {
-            let lhs = evaluate_node(left)?;
-            let rhs = evaluate_node(right)?;
+            let lhs: f64 = evaluate_node(left)?;
+            let rhs: f64 = evaluate_node(right)?;
             match operator {
                 BinaryOperator::Add => lhs + rhs,
                 BinaryOperator::Subtract => lhs - rhs,
