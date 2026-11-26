@@ -44,7 +44,7 @@ fn evaluate_node(node: &AstNode) -> Result<f64, String> {
     Ok(match node {
         AstNode::Operand { value } => *value,
         AstNode::UnaryOperation { operator, value } => {
-            let value = evaluate_node(value)?;
+            let value: f64 = evaluate_node(value)?;
             match operator {
                 UnaryOperator::Plus => value,
                 UnaryOperator::Negate => -value
